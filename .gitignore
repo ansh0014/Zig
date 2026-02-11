@@ -1,3 +1,18 @@
+# Zig
 .zig-cache/
 zig-out/
+
+# Build artifacts
 *.o
+*.exe
+*.dll
+*.so
+*.a
+*.exe.obj
+*.pdb
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
