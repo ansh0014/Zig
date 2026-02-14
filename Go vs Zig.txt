@@ -1,0 +1,47 @@
+When we write code in go 
+package main
+func main(){
+
+    println("hello")
+}
+// But actually go adds a lot of hidden code:
+1) Runtime initializattion
+2) Goroutine scheduler
+3) Garbage collector
+4) Stack management
+5) Panic/recover system
+6) Memory allocator
+7) System call wrappers 
+// when it complies the code it contain Go runtime, GC, Scheduler, Standard library , These things we cannot remove the runtime 
+======BUT IN ZIG==---
+how we write code in zig
+pub fn main()void{
+std.debug.print('hello\n',.{});
+}
+zig adds
+1) No garbage collector
+2) no scheduler
+3) not runtime system
+zig generates jsut our code+what our explicity imported
+we can even compile--- freestanding
+
+----Go(GC- GARGABE COOLECTOR)---
+x:=make([]int , 1000)
+//memory is allocated on heap
+// go runtime 
+1) tracks refernces
+2) Pauses program
+3) scans memory
+4) frees unused memory
+in go this is automatically done
+but we don't have control when GC runs , it can cause latency spikes, it consumes CPU
+
+===Zig memory Model===
+const allocator=std.heap.page_allocator;
+const arr=try allocator.alloc(i32, 1000);
+we have to free it
+allocator.free(arr);
+if we don't free it  memory leak.
+Zig forces you to manage memory.
+-NO BACKGROUND GC THREAD
+- NO HIDDEN PAUSES
