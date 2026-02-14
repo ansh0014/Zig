@@ -1,0 +1,9 @@
+\n--------- = Newline
+\r--------- = Carriage Return 
+\t--------- = tab 
+\\--------- = backslash 
+\'--------- = single Quote 
+\"--------- = double Quote 
+\xNN--------- = hexadecimal 8-bit byte value(2 digits) 
+\u{NNNNNN}--------- = hexadecimal Unicode code point UTF-8 encode(1or more digits) 
+ 
