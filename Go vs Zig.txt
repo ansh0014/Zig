@@ -45,3 +45,28 @@ if we don't free it  memory leak.
 Zig forces you to manage memory.
 -NO BACKGROUND GC THREAD
 - NO HIDDEN PAUSES
+// Now we will try to understand the Scheduler(Concurrency)
+IN GO
+go func(){
+    fmt.Println("hello")
+}()
+we think - This create the new thread 
+but actually
+-it creates a goroutine.
+-Runtime scheduler manager it.
+-M:N threading model.
+-Context switching
+-Stack resizing
+-work stealing
+-- All hidden inside runtime
+we cannot control sheduler deeply
+---BUT IN ZIG CONCURRENCY---
+const thread=try.std.Thread.spawn(...);
+Zig Does Not Create;
+-Hidden scheduler
+-Hidden goroutine system
+====We control ====
+-Tread
+-Synchronization
+-Memory
+
